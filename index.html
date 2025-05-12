@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ders Çalışma Programı</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Favicon ve PWA için simge -->
+    <link rel="icon" href="icons/icon-192.png" />
+
+    <!-- Stil Dosyası -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- PWA için meta etiketleri -->
+    <meta name="theme-color" content="#006064" />
+    <meta name="description" content="Ortaokul ders çalışmaları için hazırlanan bir uygulama." />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
+    <div id="auth-container" class="auth-container">
+      <div class="auth-box">
+        <h2>Giriş Yap</h2>
+        <form id="auth-form" class="auth-form" onsubmit="return false;">
+          <input type="email" id="email" placeholder="E-posta" required>
+          <input type="password" id="password" placeholder="Şifre" required>
+          <div class="auth-buttons">
+            <button type="button" id="login-btn">Giriş Yap</button>
+            <button type="button" id="signup-btn">Kayıt Ol</button>
+          </div>
+          <p id="auth-message"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app-container" class="hidden">
+      <div class="container">
+        <h1>Ders Çalışma Programı</h1>
+
+        <div class="controls">
+          <button id="prev-week">
+            <i class="fas fa-chevron-left"></i>
+            Önceki Hafta
+          </button>
+          <button id="print-pdf">
+            <i class="fas fa-print"></i>
+            PDF Olarak Yazdır
+          </button>
+          <button id="next-week">
+            Sonraki Hafta
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button id="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Çıkış Yap
+          </button>
+        </div>
+
+        <!-- Programın ana içeriği -->
+        <div id="program-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Gün</th>
+                <th>Türkçe</th>
+                <th>Matematik</th>
+                <th>Fen Bilgisi</th>
+                <th>Sosyal Bilgiler</th>
+                <th>İngilizce</th>
+                <th>Din Kültürü ve Ahlak Bilgisi</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <!-- JavaScript ile günler ve ders saatleri eklenecek -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Worker için gerekli PWA kodu -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("service-worker.js").then(
+            function (registration) {
+              console.log(
+                "ServiceWorker registered with scope:",
+                registration.scope
+              );
+            },
+            function (err) {
+              console.log("ServiceWorker registration failed:", err);
+            }
+          );
+        });
+      }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<!-- Ana JavaScript dosyası -->
+<script src="script.js"></script>
+    
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 20px; background-color: #333; color: #fff; font-family: Arial, sans-serif; margin-top: 40px;">
+      <p>&copy; 2025 Begüm Narmanlı tarafından tasarlanmıştır. Tüm hakları saklıdır.</p>
+    </footer>
+  </body>
+</html>
