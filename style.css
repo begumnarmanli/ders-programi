@@ -30,7 +30,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  flex: 1;
   background-color: var(--background-color);
 }
 
@@ -197,11 +197,13 @@ tr:hover {
 
 /* Footer Styles */
 footer {
-  background-color: #333;
+  background-color: var(--primary-color);
   color: white;
   text-align: center;
   padding: 20px;
-  font-size: 14px;
+  /* height: 20px; */
+  font-family: Arial sans-serif;
+  font-size: 16px;
   margin-top: auto;
 }
 

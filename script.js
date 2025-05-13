@@ -6,7 +6,8 @@ const firebaseConfig = {
   storageBucket: "calismatakvimi-e75c4.firebasestorage.app",
   messagingSenderId: "541979758881",
   appId: "1:541979758881:web:1ac74c4a88c8864e37ee60",
-  measurementId: "G-HLXWBYJ1RP"
+  measurementId: "G-HLXWBYJ1RP",
+  databaseURL: "https://calismatakvimi-e75c4-default-rtdb.firebaseio.com/"
 };
 
 // Firebase'i başlat
