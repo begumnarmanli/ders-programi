@@ -7,8 +7,9 @@ const firebaseConfig = {
   messagingSenderId: "541979758881",
   appId: "1:541979758881:web:1ac74c4a88c8864e37ee60",
   measurementId: "G-HLXWBYJ1RP",
-  databaseURL: "https://calismatakvimi-e75c4-default-rtdb.firebaseio.com/"
+  databaseURL: "https://calismatakvimi-e75c4-default-rtdb.europe-west1.firebasedatabase.app/"
 };
+
 
 // Firebase'i başlat
 firebase.initializeApp(firebaseConfig);
@@ -133,6 +134,14 @@ const saveData = async () => {
   }
 };
 
+// Date ekleme fonksiyonu
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
+
 // Firebase'den veri yükle
 const loadData = async () => {
   try {
@@ -162,7 +171,7 @@ const createNewWeek = () => {
     startDate: startDate,
     days: Array.from({length:7}, (_,i) => {
       const date = new Date(startDate);
-      date.setDate(date.getDate() + i);
+      date.setDate(date.addDays(i)).toString();
       return {
         date: date,
         subjects: subjects.reduce((acc, subject) => {
@@ -184,7 +193,8 @@ const updateTable = () => {
     
     // Tarih hücresi
     const dateCell = document.createElement('td');
-    dateCell.textContent = `${days[dayIndex]} (${day.date.toLocaleDateString('tr-TR')})`;
+    let new_tarih = new Date(Date.parse(day.date));
+    dateCell.textContent = `${days[dayIndex]} (${new_tarih.toLocaleDateString('tr-TR')})`;
     dateCell.style.fontWeight = 'bold';
     row.appendChild(dateCell);
 
