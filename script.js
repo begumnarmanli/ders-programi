@@ -236,4 +236,8 @@ document.getElementById('next-week').addEventListener('click', () => {
   saveData();
 });
 
+document.getElementById('save').addEventListener('click', () => {
+  saveData();
+});
+
 document.getElementById('print-pdf').addEventListener('click', () => window.print());
