@@ -75,6 +75,7 @@ const signup = async () => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
     authMessage.textContent = 'Kayıt başarılı! Giriş yapılıyor...';
+    createNewWeek();
   } catch (error) {
     authMessage.textContent = error.message;
   }
