@@ -1,14 +1,14 @@
 // Firebase başlatma
-const firebaseConfig = {
-  apiKey: "AIzaSyCGEOWNSWTN9qmFS623zX8kH9yAyYCIdXI",
-  authDomain: "calismatakvimi-e75c4.firebaseapp.com",
-  projectId: "calismatakvimi-e75c4",
-  storageBucket: "calismatakvimi-e75c4.firebasestorage.app",
-  messagingSenderId: "541979758881",
-  appId: "1:541979758881:web:1ac74c4a88c8864e37ee60",
-  measurementId: "G-HLXWBYJ1RP",
-  databaseURL: "https://calismatakvimi-e75c4-default-rtdb.europe-west1.firebasedatabase.app/"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyCGEOWNSWTN9qmFS623zX8kH9yAyYCIdXI",
+    authDomain: "calismatakvimi-e75c4.firebaseapp.com",
+    databaseURL: "https://calismatakvimi-e75c4-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "calismatakvimi-e75c4",
+    storageBucket: "calismatakvimi-e75c4.firebasestorage.app",
+    messagingSenderId: "541979758881",
+    appId: "1:541979758881:web:1ac74c4a88c8864e37ee60",
+    measurementId: "G-HLXWBYJ1RP"
+  };
 
 
 // Firebase'i başlat
