@@ -11,6 +11,7 @@
   };
 
 
+
 // Firebase'i başlat
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
@@ -134,14 +135,6 @@ const saveData = async () => {
   }
 };
 
-// Date ekleme fonksiyonu
-Date.prototype.addDays = function(days) {
-  var date = new Date(this.valueOf());
-  date.setDate(date.getDate() + days);
-  return date;
-}
-
-
 // Firebase'den veri yükle
 const loadData = async () => {
   try {
@@ -159,6 +152,13 @@ const loadData = async () => {
   }
 };
 
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
+
 // Yeni hafta oluştur
 const createNewWeek = () => {
   let startDate = weeks.length === 0 ? 
@@ -170,14 +170,15 @@ const createNewWeek = () => {
   return {
     startDate: startDate,
     days: Array.from({length:7}, (_,i) => {
-      const date = new Date(startDate);
-      date.setDate(date.addDays(i)).toString();
+      startDate = startDate.addDays(i);
       return {
-        date: date,
+        date1: startDate,
         subjects: subjects.reduce((acc, subject) => {
           acc[subject] = '';
           return acc;
-        }, {})
+        }, {}),
+        date2 : "deneme",
+        date : startDate.toString()
       };
     })
   };
