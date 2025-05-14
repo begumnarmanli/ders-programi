@@ -161,24 +161,24 @@ Date.prototype.addDays = function(days) {
 
 // Yeni hafta oluştur
 const createNewWeek = () => {
-  let startDate = weeks.length === 0 ? 
+  let startDate2 = weeks.length === 0 ? 
     new Date('2025-05-12') : 
     new Date(new Date(weeks[weeks.length-1].days[6].date).setDate(
       new Date(weeks[weeks.length-1].days[6].date).getDate() + 1
     ));
 
   return {
-    startDate: startDate,
+    startDate: startDate2,
     days: Array.from({length:7}, (_,i) => {
-      startDate = startDate.addDays(i);
+      startDate1 = startDate2.addDays(i);
       return {
-        date1: startDate,
+        date1: startDate1,
         subjects: subjects.reduce((acc, subject) => {
           acc[subject] = '';
           return acc;
         }, {}),
         date2 : "deneme",
-        date : startDate.toString()
+        date : startDate1.toString()
       };
     })
   };
