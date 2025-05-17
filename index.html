@@ -14,6 +14,13 @@
     <!-- Stil Dosyası -->
     <link rel="stylesheet" href="style.css" />
 
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/tr.js"></script>
+    
     <!-- PWA için meta etiketleri -->
     <meta name="theme-color" content="#006064" />
     <meta name="description" content="Ortaokul ders çalışmaları için hazırlanan bir uygulama." />
@@ -26,8 +33,8 @@
       <div class="auth-box">
         <h2>Giriş Yap</h2>
         <form id="auth-form" class="auth-form" onsubmit="return false;">
-          <input type="email" id="email" placeholder="E-posta" required>
-          <input type="password" id="password" placeholder="Şifre" required>
+          <input type="email" id="email" placeholder="E-posta" required autocomplete="username">
+          <input type="password" id="password" placeholder="Şifre" required autocomplete="current-password">
           <div class="auth-buttons">
             <button type="button" id="login-btn">Giriş Yap</button>
             <button type="button" id="signup-btn">Kayıt Ol</button>
@@ -45,6 +52,16 @@
 
 
         <!-- Programın ana içeriği -->
+        <!-- Tarih Seçme Kutusu -->
+
+<div id="date-picker-container">
+  <!-- <label for="date-picker">Tarihe Git:</label> -->
+  <!-- <button onclick="goToDate()">Tarih Seçin:</button> -->
+   <label for="date-picker">Tarih Seçin:</label>
+  <input type="text" id="date-picker">
+</div>
+
+
         <div id="program-container">
           <table>
             <thead>
@@ -84,6 +101,8 @@
             <i class="fas fa-sign-out-alt"></i>
             Çıkış Yap
           </button>
+          <div id="save-message" class="save-message hidden">Kaydedildi ✓</div>
+
         </div>
       </div>
     </div>
@@ -109,13 +128,26 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <!-- Ana JavaScript dosyası -->
 <script src="script.js"></script>
     
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2025 Begüm Narmanlı tarafından tasarlanmıştır. Tüm hakları saklıdır.</p>
+      <p class="footer-text">&copy; 2025 Begüm Narmanlı tarafından tasarlanmıştır. Tüm hakları saklıdır.</p>
     </footer>
+
+    <!-- Çıkış Onay Modalı -->
+<div id="logout-modal" class="modal hidden">
+  <div class="modal-content">
+    <p>Çıkmak istediğinize emin misiniz?</p>
+    <div class="modal-buttons">
+      <button id="cancel-logout">Hayır</button>
+      <button id="confirm-logout">Evet</button>
+    </div>
+  </div>
+</div>
+
   </body>
 </html>

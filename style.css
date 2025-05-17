@@ -14,17 +14,24 @@
   --hover-color: #e0f7fa;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
   background-color: var(--background-color);
   color: var(--text-color);
+  position: relative;
+  padding-bottom: 60px;
   overflow: hidden;
 }
+
 
 /* Auth Container Styles */
 .auth-container {
@@ -98,7 +105,7 @@ body {
 
 /* App Container Styles */
 .hidden {
-  display: none !important;
+  display: none;
 }
 
 .container {
@@ -106,13 +113,12 @@ body {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: calc(100vh - 60px);
+  width: 100%;
 }
 
 h1 {
   text-align: center;
   color: var(--primary-color);
-  margin-bottom: 30px;
   font-size: 2.5rem;
 }
 
@@ -141,6 +147,132 @@ h1 {
 .controls button:hover {
   background-color: var(--secondary-color);
 }
+
+.save-message {
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Tarih Seçici Stilleri */
+#date-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--background-color);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  /* margin: 1rem auto; */
+  border: 1px solid var(--border-color);
+  transition: box-shadow 0.3s ease;
+}
+
+#date-picker-container:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+#date-picker-container label {
+  font-weight: 800;
+  color: var(--primary-color);
+  user-select: none;
+  white-space: nowrap;
+}
+
+#date-picker {
+  flex-grow: 1;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  outline: none;
+  background: white;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#date-picker:hover {
+  border-color: var(--primary-color);
+  background-color: var(--hover-color);
+}
+
+#date-picker:focus {
+  border-color: var(--primary-color);
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(1, 94, 100, 0.1);
+}
+
+/* Flatpickr Özelleştirmeleri */
+.flatpickr-calendar {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flatpickr-months {
+  background: var(--hover-color);
+  border-radius: 8px 8px 0 0;
+  padding: 0.3rem 0;
+}
+
+.flatpickr-month {
+  height: 35px;
+}
+
+.flatpickr-current-month {
+  font-size: 1rem;
+  padding: 0.3rem 0;
+}
+
+.flatpickr-weekday {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+}
+
+.flatpickr-day {
+  border-radius: 4px;
+  margin: 1px;
+  height: 30px;
+  line-height: 30px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.flatpickr-day.selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.flatpickr-day:hover {
+  background: var(--hover-color);
+  border-color: var(--primary-color);
+}
+
+.flatpickr-day.today {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+  background: var(--hover-color);
+  border-color: var(--primary-color);
+}
+
 
 /* Program Container Styles */
 #program-container {
@@ -197,16 +329,26 @@ tr:hover {
 }
 
 /* Footer Styles */
-footer {
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: var(--primary-color);
   color: white;
   text-align: center;
-  padding: 20px;
-  /* height: 20px; */
-  font-family: Arial sans-serif;
-  font-size: 16px;
-  margin-top: auto;
+  padding: 1rem;
+  font-size: 0.9rem;
+  z-index: 100;
 }
+
+
+.footer-text {
+  margin: 0;
+  padding-top: 0;
+  line-height: 0.5rem;
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -243,7 +385,7 @@ footer {
   .auth-container,
   .controls,
   footer {
-    display: none !important;
+    display: none;
   }
 
   body {
@@ -270,8 +412,8 @@ footer {
   }
 
   th {
-    background-color: var(--primary-color) !important;
-    color: white !important;
+    background-color: var(--primary-color);
+    color: white;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -285,4 +427,5 @@ footer {
     overflow: hidden;
     padding: 8px;
   }
+  
 }
