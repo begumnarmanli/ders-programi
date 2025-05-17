@@ -77,36 +77,42 @@ const logout = () => {
 };
 
 // Sayfa yüklendiğinde çalışacak kodlar
-document.addEventListener('DOMContentLoaded', function() {
-  // Event listener ekleme (butonlara tıklama olaylarını bağlama)
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', function(e) {
-      e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.getElementById('logout-btn');
+  const logoutModal = document.getElementById('logout-modal');
+  const cancelLogoutBtn = document.getElementById('cancel-logout');
+  const confirmLogoutBtn = document.getElementById('confirm-logout');
+
+  if (!logoutBtn) {
+    console.warn('logout-btn elementi bulunamadı!');
+  } else {
+    logoutBtn.addEventListener('click', () => {
+      console.log('Çıkış yap butonuna tıklandı!');
       logoutModal.classList.remove('hidden');
     });
   }
 
-  // Modal butonları için event listener'lar
   if (cancelLogoutBtn) {
-    cancelLogoutBtn.addEventListener('click', function() {
+    cancelLogoutBtn.addEventListener('click', () => {
       logoutModal.classList.add('hidden');
     });
   }
 
   if (confirmLogoutBtn) {
-    confirmLogoutBtn.addEventListener('click', function() {
+    confirmLogoutBtn.addEventListener('click', () => {
       logoutModal.classList.add('hidden');
       logout();
     });
   }
 
-  // Modal dışına tıklandığında kapat
-  window.addEventListener('click', function(event) {
+  window.addEventListener('click', (event) => {
     if (event.target === logoutModal) {
       logoutModal.classList.add('hidden');
     }
   });
-}); 
+});
+
+
 
 // Auth fonksiyonları
 const login = async () => {
@@ -235,7 +241,7 @@ auth.onAuthStateChanged(async user => {
 // Auth event listeners
 loginBtn.addEventListener('click', login);
 signupBtn.addEventListener('click', signup);
-logoutBtn.addEventListener('click', logout);
+// logoutBtn.addEventListener('click', logout);
 
 
 // Veritabanı referansı
@@ -434,6 +440,7 @@ document.getElementById('save').addEventListener('click', () => {
 
 
 document.getElementById('print-pdf').addEventListener('click', () => window.print());
+
 
 document.addEventListener("DOMContentLoaded", function () {
   flatpickr("#date-picker", {
