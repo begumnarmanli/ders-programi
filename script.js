@@ -484,3 +484,8 @@ document.getElementById('login-btn').addEventListener('click', () => {
 document.getElementById('logout-btn').addEventListener('click', () => {
   setLoginState(false);
 });
+
+window.onload = () => {
+  document.getElementById('email').value = '';
+  document.getElementById('password').value = '';
+};
