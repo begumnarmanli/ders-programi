@@ -569,9 +569,9 @@ body.login-active #auth-container {
   }
 
   .footer {
-
+    position: relative; 
     width: 100%;
-    margin-top: auto; /* footer hep en altta */
+    margin-top: auto; 
   }
 }
 
