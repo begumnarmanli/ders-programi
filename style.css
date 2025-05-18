@@ -17,6 +17,8 @@
 html, body {
   height: 100%;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -29,7 +31,6 @@ body {
   color: var(--text-color);
   position: relative;
   padding-bottom: 60px;
-  overflow: hidden;
 }
 
 
@@ -109,7 +110,7 @@ body {
 }
 
 .container {
-  flex: 1;
+  flex: 1 0 auto;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -430,6 +431,7 @@ tr:hover {
   padding: 1.5rem;
   font-size: 0.9rem;
   z-index: 100;
+  flex-shrink: 0;
 }
 
 
@@ -442,12 +444,32 @@ tr:hover {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+
+  #program-container {
+  overflow-x: auto;
+}
+
+#program-container::-webkit-scrollbar {
+  height: 8px;  /* scroll bar kalınlığı */
+}
+
+#program-container::-webkit-scrollbar-thumb {
+  background-color: #888;  /* scroll bar rengi */
+  border-radius: 4px;
+}
+
+  table {
+    width: 100%;
+    table-layout: fixed; /* Sütun genişlikleri eşit olacak */
+    border-collapse: collapse;
+  }
   .container {
-    padding: 10px;
+    padding: 5px;
+    /* padding-bottom: 100px; */
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .controls {
@@ -455,18 +477,81 @@ tr:hover {
   }
 
   .controls button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 
   th, td {
-    padding: 8px;
-    font-size: 0.9rem;
+    white-space: normal; /* Satır kırma aktif */
+    word-break: break-word;
+    font-size: 0.8rem; /* Yazı biraz küçülebilir */
+    padding: 6px;
+    text-align: center;
   }
 
   .auth-box {
     margin: 1rem;
     padding: 1.5rem;
+  }
+
+    #auth-container {
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+  
+
+  #auth-container + .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+/* Footer genel stil */
+.footer {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color, #006064);
+  text-align: center;
+  margin-top: auto;
+  z-index: 10;
+}
+
+/* Login ekranı aktifken: */
+body.login-active {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Login ekranında footer sabit altta */
+body.login-active .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Login ekranında auth-container'ın altına footer yüksekliği kadar boşluk */
+body.login-active #auth-container {
+  padding-bottom: 70px; /* footer yüksekliği kadar */
+}
+
+/* Giriş yapınca app-container'ın altına footer yüksekliği kadar boşluk */
+#app-container {
+  padding-bottom: 10px;
+}
+
+
+  .footer-text {
+    margin: 0;
+    padding-top: 0;
+    line-height: 0.9rem;
+  }
+
+    .footer-break {
+    display: block;
+    margin-top: 8px;
   }
 }
 

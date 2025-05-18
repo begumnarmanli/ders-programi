@@ -453,3 +453,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 }); 
+
+
+function setLoginState(isLoggedIn) {
+  if (!isLoggedIn) {
+    // Login ekranı aktif
+    document.body.classList.add('login-active');
+    document.getElementById('auth-container').classList.remove('hidden');
+    document.getElementById('app-container').classList.add('hidden');
+  } else {
+    // Giriş yapıldı
+    document.body.classList.remove('login-active');
+    document.getElementById('auth-container').classList.add('hidden');
+    document.getElementById('app-container').classList.remove('hidden');
+  }
+}
+
+// Sayfa yüklendiğinde login ekranı açık
+window.addEventListener('load', () => {
+  setLoginState(false);
+});
+
+// Login butonuna tıklanınca
+document.getElementById('login-btn').addEventListener('click', () => {
+  // Buraya gerçek login kontrolünü koyabilirsin
+  setLoginState(true);
+});
+
+// Çıkış yapıldığında
+document.getElementById('logout-btn').addEventListener('click', () => {
+  setLoginState(false);
+});
