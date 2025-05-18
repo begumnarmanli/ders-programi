@@ -4,6 +4,7 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         '/',
         '/index.html',
+        '/offline.html',          
         '/style.css',
         '/script.js',
         '/icons/icon-256.png',
@@ -17,20 +18,33 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
-      // Cache'den yanıt var mı?
-      return response || fetch(event.request); // Cache'den varsa onu ver, yoksa normal fetch
+      if (response) {
+        // Cache'den varsa onu ver
+        return response;
+      }
+      // Cache’de yoksa ağı kullan
+      return fetch(event.request).catch(function() {
+        // Fetch başarısız olursa ve istek HTML ise offline.html döndür
+        if (
+          event.request.method === 'GET' &&
+          event.request.headers.get('accept') &&
+          event.request.headers.get('accept').includes('text/html')
+        ) {
+          return caches.match('/offline.html');
+        }
+      });
     })
   );
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v1']; // Yeni cache versiyonu
+  var cacheWhitelist = ['v1'];
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.map(function(cacheName) {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName); // Eski cache'leri sil
+            return caches.delete(cacheName);
           }
         })
       );
