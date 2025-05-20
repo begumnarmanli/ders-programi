@@ -459,6 +459,34 @@ tr:hover {
   line-height: 0.5rem;
 }
 
+#dark-mode-toggle{
+  position: absolute; 
+  top: 16px; 
+  right: 16px; 
+  z-index: 2000; 
+  background: var(--primary-color); 
+  color: #fff; 
+  border: none; 
+  border-radius: 50%; 
+  width: 44px; 
+  height: 44px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.3rem; 
+  cursor: pointer; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Sadece mobilde dark mode ikonunu küçült */
+@media (max-width: 480px) {
+  #dark-mode-toggle {
+    top: 8px;
+    right: 4px;
+    width: 35px;
+    height: 35px;
+  }
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -573,6 +601,24 @@ body.login-active #auth-container {
   }
 }
 
+#dark-mode-toggle{
+  position: absolute; 
+  top: 8px; 
+  right: 4px; 
+  z-index: 2000; 
+  background: var(--primary-color); 
+  color: #fff; 
+  border: none; 
+  border-radius: 50%; 
+  width: 35px; 
+  height: 35px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.3rem; 
+  cursor: pointer; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer {
