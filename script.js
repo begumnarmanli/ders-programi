@@ -622,6 +622,7 @@ document.addEventListener("DOMContentLoaded", function () {
     locale: "tr",
     defaultDate: "19.05.2024",
     disableMobile: true,
+    yearSelectorType: "dropdown",
     onChange: function(selectedDates, dateStr) {
       goToDate();
     }

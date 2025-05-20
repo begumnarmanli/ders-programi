@@ -382,6 +382,23 @@ transition: background-color 0.3s, transform 0.3s ease;
   border-color: var(--primary-color);
 }
 
+.flatpickr-current-month .numInputWrapper {
+  display: inline-flex !important;
+  visibility: visible !important;
+  width: auto !important;
+  min-width: 48px !important;
+}
+.flatpickr-current-month input.cur-year {
+  display: inline-block !important;
+  visibility: visible !important;
+  width: 48px !important;
+  min-width: 48px !important;
+  background: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  font-size: 1rem !important;
+  text-align: center !important;
+}
 
 /* Program Container Styles */
 #program-container {
