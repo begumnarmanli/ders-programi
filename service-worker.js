@@ -2,14 +2,14 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/offline.html',          
-        '/style.css',
-        '/script.js',
-        '/icons/icon-256.png',
-        '/icons/icon-512.png',
-        '/manifest.json'
+        '/ders-programi/',
+        '/ders-programi/index.html',
+        '/ders-programi/offline.html',
+        '/ders-programi/style.css',
+        '/ders-programi/script.js',
+        '/ders-programi/icons/icon-256.png',
+        '/ders-programi/icons/icon-512.png',
+        '/ders-programi/manifest.json'
       ]);
     })
   );
@@ -30,7 +30,7 @@ self.addEventListener('fetch', function(event) {
           event.request.headers.get('accept') &&
           event.request.headers.get('accept').includes('text/html')
         ) {
-          return caches.match('/offline.html');
+          return caches.match('/ders-programi/offline.html');
         }
       });
     })

@@ -6,13 +6,13 @@
     <title>Ders Çalışma Programı</title>
 
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="/ders-programi/manifest.json" />
 
     <!-- Favicon ve PWA için simge -->
-    <link rel="icon" href="icons/icon-256.png" />
+    <link rel="icon" href="/ders-programi/icons/icon-256.png" />
 
     <!-- Stil Dosyası -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/ders-programi/style.css" />
 
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -116,7 +116,7 @@
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
-          navigator.serviceWorker.register("service-worker.js").then(
+          navigator.serviceWorker.register("/ders-programi/service-worker.js").then(
             function (registration) {
               console.log(
                 "ServiceWorker registered with scope:",
@@ -136,7 +136,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <!-- Ana JavaScript dosyası -->
-<script src="script.js"></script>
+<script src="/ders-programi/script.js"></script>
     
     <!-- Footer -->
     <footer class="footer">
