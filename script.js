@@ -196,6 +196,39 @@ document.addEventListener('DOMContentLoaded', () => {
       logoutModal.classList.add('hidden');
     }
   });
+
+  // Karanlık Mod Toggle
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const darkModeIcon = document.getElementById('dark-mode-icon');
+
+  function setDarkMode(enabled) {
+    if (enabled) {
+      document.body.classList.add('dark-mode');
+      darkModeIcon.classList.remove('fa-moon');
+      darkModeIcon.classList.add('fa-sun');
+      localStorage.setItem('darkMode', '1');
+    } else {
+      document.body.classList.remove('dark-mode');
+      darkModeIcon.classList.remove('fa-sun');
+      darkModeIcon.classList.add('fa-moon');
+      localStorage.setItem('darkMode', '0');
+    }
+  }
+
+  darkModeToggle.addEventListener('click', function() {
+    const isDark = document.body.classList.contains('dark-mode');
+    setDarkMode(!isDark);
+  });
+
+  // Sayfa yüklenirken localStorage'dan tema kontrolü
+  window.addEventListener('DOMContentLoaded', function() {
+    const darkPref = localStorage.getItem('darkMode');
+    if (darkPref === '1') {
+      setDarkMode(true);
+    } else {
+      setDarkMode(false);
+    }
+  });
 });
 
 // Auth state listener
@@ -609,4 +642,17 @@ const resetData = async () => {
   } catch (err) {
     console.error("Sıfırlama hatası:", err);
   }
-}; 
+};
+
+// İnternet bağlantısı kontrolü ve uyarı gösterme
+function updateOnlineStatus() {
+  const offlineWarning = document.getElementById('offline-warning');
+  if (navigator.onLine) {
+    offlineWarning.classList.remove('visible');
+  } else {
+    offlineWarning.classList.add('visible');
+  }
+}
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+document.addEventListener('DOMContentLoaded', updateOnlineStatus);

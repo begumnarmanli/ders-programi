@@ -95,7 +95,25 @@ body {
 }
 
 .auth-buttons button:hover {
-  background-color: var(--secondary-color);
+  background-color: #9ddceb;
+  color: #fff;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(1,94,100,0.18);
+  transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-buttons button:active {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(1,94,100,0.18);
+  transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .auth-buttons button:hover {
+  background-color: #e0f7fa;
+  color: #23232a;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(30,41,59,0.22);
+  transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .auth-message {
@@ -206,24 +224,24 @@ transition: background-color 0.3s, transform 0.3s ease;
 .modal-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px; /* controls button ile aynı gap */
+  gap: 20px; 
   margin-top: 1.5rem;
-  flex-wrap: wrap; /* controls ile uyumlu */
+  flex-wrap: wrap; 
 }
 
 /* Modal butonlarının genel stili */
 .modal-buttons button {
-  padding: 10px 20px; /* controls button ile aynı padding */
+  padding: 10px 20px; 
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 5px; /* controls ile aynı border-radius */
+  border-radius: 5px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1rem; /* controls ile aynı font-size */
+  font-size: 1rem; 
   display: flex;
   align-items: center;
-  gap: 8px; /* controls button ile aynı gap */
+  gap: 8px; 
   transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -482,9 +500,9 @@ tr:hover {
   }
 
   th, td {
-    white-space: normal; /* Satır kırma aktif */
+    white-space: normal; 
     word-break: break-word;
-    font-size: 0.8rem; /* Yazı biraz küçülebilir */
+    font-size: 0.8rem;
     padding: 6px;
     text-align: center;
   }
@@ -556,22 +574,27 @@ body.login-active #auth-container {
 }
 
 
-@media (min-width: 768px) {
-  html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #app-container {
-    flex: 1 0 auto;
-  }
-
+@media (min-width: 768px) and (max-width: 1024px) {
   .footer {
-    position: relative; 
+    position: relative;
     width: 100%;
-    margin-top: auto; 
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Sadece login ekranında footer sabit ve en altta */
+  body.login-active .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-top: 0;
+  }
+  body:not(.login-active) .footer {
+    width: 100%;
+    margin-top: auto;
   }
 }
 
@@ -623,4 +646,215 @@ body.login-active #auth-container {
     padding: 8px;
   }
   
+}
+
+/*karanlık mod renk paleti (daha koyu mavi vurgu) */
+body.dark-mode {
+  --primary-color: #1e293b; /* Daha koyu mavi (footer, buton, başlık) */
+  --secondary-color: #334155; /* Nötr koyu gri-mavi (tablo başlık, modal başlık) */
+  --background-color: #18181b;
+  --text-color: #f3f4f6;
+  --border-color: #334155;
+  --hover-color: #23232a;
+  --button-color: #1e293b;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .auth-box {
+  background: #334155;
+  color: var(--text-color);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+body.dark-mode #program-container,
+body.dark-mode .modal-content,
+body.dark-mode table {
+  background-color: #23232a;
+  color: var(--text-color);
+}
+
+body.dark-mode .footer {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+body.dark-mode #date-picker-container label {
+  color: var(--text-color);
+}
+
+body.dark-mode th,
+body.dark-mode .modal-content h3,
+body.dark-mode .modal-content p {
+  color: var(--text-color);
+}
+
+body.dark-mode h1,
+body.dark-mode label,
+body.dark-mode .footer-text,
+body.dark_mode .footer-break {
+  color: var(--text-color);
+}
+
+body.dark-mode .controls button,
+body.dark-mode .modal-buttons button {
+  background-color: var(--button-color);
+  color: #fff;
+  border: 1px solid var(--primary-color);
+}
+
+body.dark-mode .controls button:hover,
+body.dark-mode .modal-buttons button:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+body.dark-mode .editable-cell,
+body.dark-mode th, 
+body.dark_mode td {
+  color: var(--text-color);
+}
+
+body.dark-mode .editable-cell:focus {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+body.dark-mode #date-picker-container {
+  background: #23232a;
+  border-color: #fff;
+  box-shadow: 0 0 0 0 whitesmoke;
+}
+
+body.dark-mode #date-picker {
+  background: #23232a;
+  color: var(--text-color);
+  border-color: #fff;
+  text-align: center;
+}
+
+body.dark-mode .flatpickr-calendar {
+  background: #23232a;
+  color: var(--text-color);
+  border-color: var(--primary-color);
+}
+
+body.dark-mode .flatpickr-months {
+  background: var(--primary-color);
+}
+
+/* Flatpickr Karanlık Mod: Tüm ay/gün/yıl seçimleri ve dropdown'lar için koyu arka plan ve beyaz yazı */
+body.dark-mode .flatpickr-calendar,
+body.dark-mode .flatpickr-months,
+body.dark-mode .flatpickr-monthDropdown-months,
+body.dark-mode .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month,
+body.dark-mode .flatpickr-current-month input.cur-year {
+  background: var(--secondary-color) !important;
+  color: #fff !important;
+}
+body.dark-mode .flatpickr-day,
+body.dark-mode .flatpickr-weekday,
+body.dark-mode .flatpickr-current-month {
+  color: #fff;
+}
+body.dark-mode .flatpickr-day:hover {
+  background: var(--secondary-color);
+  color: #fff;
+}
+body.dark-mode .flatpickr-current-month .arrowUp,
+body.dark_mode .flatpickr-current-month .arrowDown,
+body.dark-mode .flatpickr-prev-month,
+body.dark-mode .flatpickr-next-month {
+  color: #fff;
+  background: transparent;
+  border: none;
+}
+body.dark-mode .flatpickr-current-month .arrowUp:hover,
+body.dark-mode .flatpickr-current-month .arrowDown:hover,
+body.dark-mode .flatpickr-prev-month:hover,
+body.dark-mode .flatpickr-next-month:hover {
+  color: #fff;
+  background: var(--primary-color);
+}
+
+body.dark-mode .flatpickr-day.selected {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+body.dark-mode .flatpickr-day.today {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+body.dark-mode .auth-message {
+  color: #ffbaba;
+}
+
+body.dark-mode .save-message {
+  color: #fff;
+}
+
+/* Tablo satırları için karanlık modda daha iyi kontrast */
+body.dark-mode tr:nth-child(even) {
+  background-color: #23232a;
+}
+body.dark-mode tr:nth-child(odd) {
+  background-color: #18181b;
+}
+body.dark-mode th, body.dark_mode td {
+  color: var(--text-color);
+}
+
+body.dark-mode .flatpickr-day,
+body.dark-mode .flatpickr-weekday,
+body.dark-mode .flatpickr-current-month {
+  color: #fff;
+}
+
+body.dark-mode .flatpickr-day:hover {
+  background: var(--secondary-color);
+  color: #fff;
+}
+
+body.dark-mode .auth-box h2 {
+  color: #fff;
+}
+
+/* Buton tıklama (active) animasyonu: havaya kalkıyor gibi (yukarı ve gölgeyle), istenen transition ile */
+.auth-buttons button:active,
+.controls button:active,
+.modal-buttons button:active {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(1,94,100,0.18);
+  transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .auth-buttons button:active,
+body.dark-mode .controls button:active,
+body.dark-mode .modal-buttons button:active {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(30,41,59,0.22);
+  transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* İnternet bağlantısı yoksa uyarı ekranı */
+#offline-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30,41,59,0.96);
+  color: #fff;
+  z-index: 9999;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30vh;
+  letter-spacing: 0.5px;
+}
+#offline-warning.visible {
+  display: block;
 }
