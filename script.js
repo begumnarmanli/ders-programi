@@ -621,6 +621,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dateFormat: "d.m.Y",
     locale: "tr",
     defaultDate: "19.05.2024",
+    disableMobile: true,
     onChange: function(selectedDates, dateStr) {
       goToDate();
     }

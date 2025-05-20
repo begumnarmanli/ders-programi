@@ -904,3 +904,31 @@ body.dark-mode .modal-buttons button:active {
 #offline-warning.visible {
   display: block;
 }
+
+@media (max-width: 768px) {
+  /* Flatpickr takvimi mobil ve tablette masaüstü gibi görünsün */
+  .flatpickr-calendar,
+  .flatpickr-months {
+    font-size: 1rem;
+    padding: 0.3rem 0;
+  }
+  .flatpickr-month {
+    height: 35px;
+  }
+  .flatpickr-current-month {
+    font-size: 1rem;
+    padding: 0.3rem 0;
+  }
+  .flatpickr-weekday {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0;
+  }
+  .flatpickr-day {
+    font-size: 0.9rem;
+    height: 30px;
+    line-height: 30px;
+    margin: 1px;
+    border-radius: 4px;
+  }
+}
